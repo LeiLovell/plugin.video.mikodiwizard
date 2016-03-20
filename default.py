@@ -12,7 +12,7 @@ import ntpath
 
 USER_AGENT = 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3'
 base='Eire'
-ADDON=xbmcaddon.Addon(id='plugin.video.MiKodiWizard')
+ADDON=xbmcaddon.Addon(id='plugin.video.mikodiwizard')
 
 
 VERSION = "1.1.1"
