@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.toms" name="Toms Easy Setup Wizard" version="1.0.2" provider-name="Tom, ROI">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video executable</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Toms One Click Kodi Setup/Updater</summary>
+    <description lang="en">This allows one click setup please be aware this is single use only unless upgrading. IP address are been logged. Anyone found to be sharing my build will instantly terminate themselves from future upgrades any issues contact me regards Tom</description>
+    <platform>all</platform>
+  </extension>
+</addon>
