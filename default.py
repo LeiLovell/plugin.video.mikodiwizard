@@ -15,7 +15,7 @@ base='Eire'
 ADDON=xbmcaddon.Addon(id='plugin.video.MiKodiWizard')
 
 
-VERSION = "1.0.4"
+VERSION = "1.1.1"
 PATH = "mikodi"
 
 
