@@ -11,16 +11,16 @@ import ntpath
 
 
 USER_AGENT = 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3'
-base='Eire'
-ADDON=xbmcaddon.Addon(id='plugin.video.mikodiwizard')
+base='http://mikodi.uk'    #HERE YOU NEED TO INPUT YOUR WEB URL HTTP://MYWEBSPACE.NET
+ADDON=xbmcaddon.Addon(id='plugin.program.mikodiwizard')
 
 
-VERSION = "1.1.1"
+VERSION = "1.0.1"
 PATH = "mikodiwizard"
 
 
 def CATEGORIES():
-    link = OPEN_URL('http://mikodi.uk/.txt').replace('\n','').replace('\r','')
+    link = OPEN_URL('https://mikodi.uk/miwiz.txt').replace('\n','').replace('\r','')  #HERE YOU NEED TO ADDRESS FOR THE XML FILE ON YOU WEBSPACE THIS WILL BE WHERE YOU HAVE THE PATH TO YOUR ZIP FILES
     match = re.compile('name="(.+?)".+?rl="(.+?)".+?mg="(.+?)".+?anart="(.+?)".+?escription="(.+?)"').findall(link)
     for name,url,iconimage,fanart,description in match:
         addDir(name,url,1,iconimage,fanart,description)
@@ -39,7 +39,7 @@ def OPEN_URL(url):
 def wizard(name,url,description):
     path = xbmc.translatePath(os.path.join('special://home/addons','packages'))
     dp = xbmcgui.DialogProgress()
-    dp.create("mikodi")
+    dp.create("[COLOR dodgerblue]Installing Your Build[/COLOR] [COLOR lime]Please Wait[/COLOR]","Downloading ",'', 'Please Wait')
     lib=os.path.join(path, name+'.zip')
     try:
        os.remove(lib)
@@ -54,7 +54,7 @@ def wizard(name,url,description):
     print '======================================='
     extract.all(lib,addonfolder,dp)
     dialog = xbmcgui.Dialog()
-    dialog.ok("DOWNLOAD COMPLETE", 'To ensure all changes are saved you must now close Kodi', 'to force close Kodi. Click ok,', 'DO NOT use the quit/exit options in Kodi.')
+    dialog.ok("DOWNLOAD COMPLETE", 'Unfortunately the only way to get the new changes to stick is', 'to force close kodi. Click ok to force Kodi to close,', 'DO NOT use the quit/exit options in Kodi.')
     killxbmc()
 
 
@@ -67,7 +67,7 @@ def killxbmc():
         pass
     myplatform = platform()
     print "Platform: " + str(myplatform)
-    if myplatform == 'osx': # OSX
+    if myplatform == 'osx':
         print "############   try osx force close  #################"
         try: os.system('killall -9 XBMC')
         except: pass
