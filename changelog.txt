@@ -1,10 +1,8 @@
-v1.1.0
+v1.0.2
 Reused code
 
-v1.0.2
+v1.0.1
 Fixed Script Error when Force Colsing Kodi
-
-
 
 v1.0
 Initial Release
