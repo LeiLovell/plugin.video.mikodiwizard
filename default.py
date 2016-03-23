@@ -11,16 +11,15 @@ import ntpath
 
 
 USER_AGENT = 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3'
-base='http://mikodi.uk'    #HERE YOU NEED TO INPUT YOUR WEB URL HTTP://MYWEBSPACE.NET
-ADDON=xbmcaddon.Addon(id='plugin.program.mikodiwizard')
-
-
-VERSION = "1.0.1"
+base='http://www.mikodi.uk'
+ADDON=xbmcaddon.Addon(id='plugin.video.mikodiwizard')
+dialog = xbmcgui.Dialog()
+VERSION = "1.0.2"
 PATH = "mikodiwizard"
 
 
 def CATEGORIES():
-    link = OPEN_URL('https://mikodi.uk/miwiz.txt').replace('\n','').replace('\r','')  #HERE YOU NEED TO ADDRESS FOR THE XML FILE ON YOU WEBSPACE THIS WILL BE WHERE YOU HAVE THE PATH TO YOUR ZIP FILES
+    link = OPEN_URL('http://mikodi.uk/wizard.txt').replace('\n','').replace('\r','')
     match = re.compile('name="(.+?)".+?rl="(.+?)".+?mg="(.+?)".+?anart="(.+?)".+?escription="(.+?)"').findall(link)
     for name,url,iconimage,fanart,description in match:
         addDir(name,url,1,iconimage,fanart,description)
@@ -39,7 +38,7 @@ def OPEN_URL(url):
 def wizard(name,url,description):
     path = xbmc.translatePath(os.path.join('special://home/addons','packages'))
     dp = xbmcgui.DialogProgress()
-    dp.create("[COLOR dodgerblue]Installing Your Build[/COLOR] [COLOR lime]Please Wait[/COLOR]","Downloading ",'', 'Please Wait')
+    dp.create("Mi Kodi Wizard","Downloading ",'', 'Please Wait')
     lib=os.path.join(path, name+'.zip')
     try:
        os.remove(lib)
@@ -54,7 +53,7 @@ def wizard(name,url,description):
     print '======================================='
     extract.all(lib,addonfolder,dp)
     dialog = xbmcgui.Dialog()
-    dialog.ok("DOWNLOAD COMPLETE", 'Unfortunately the only way to get the new changes to stick is', 'to force close kodi. Click ok to force Kodi to close,', 'DO NOT use the quit/exit options in Kodi.')
+    dialog.ok("DOWNLOAD COMPLETE", 'Unfortunately the only way to get the new changes to stick is', 'to force close kodi. Click ok to force Kodi to close,', 'DO NOT use the quit/exit options in Kodi., If the Force close does not close for some reason please Restart Device or kill task manaully')
     killxbmc()
 
 
@@ -67,7 +66,7 @@ def killxbmc():
         pass
     myplatform = platform()
     print "Platform: " + str(myplatform)
-    if myplatform == 'osx':
+    if myplatform == 'osx': # OSX
         print "############   try osx force close  #################"
         try: os.system('killall -9 XBMC')
         except: pass
@@ -95,7 +94,7 @@ def killxbmc():
         except: pass
         try: os.system('adb shell am force-stop org.xbmc')
         except: pass
-        dialog.ok("[COLOR=red][B]WARNING  !!![/COLOR][/B]", "Your system has been detected as Android, you ", "[COLOR=yellow][B]MUST[/COLOR][/B] force close XBMC/Kodi. [COLOR=lime]DO NOT[/COLOR] exit cleanly via the menu.","Pulling the power cable is the simplest method to force close.")
+        dialog.ok("[COLOR=red][B]WARNING  !!![/COLOR][/B]", "Your system has been detected as Android, you ", "[COLOR=yellow][B]MUST[/COLOR][/B] force close XBMC/Kodi. [COLOR=lime]DO NOT[/COLOR] exit cleanly via the menu.","Either close using Task Manager (If unsure pull the plug).")
     elif myplatform == 'windows': # Windows
         print "############   try windows force close  #################"
         try:
