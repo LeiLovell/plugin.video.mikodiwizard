@@ -19,7 +19,7 @@ PATH = "mikodiwizard"
 
 
 def CATEGORIES():
-    link = OPEN_URL('http://mikodi.uk/Wizard/fwizard.txt').replace('\n','').replace('\r','')
+    link = OPEN_URL('http://mifire.comli.com/Wizard/wizard.html').replace('\n','').replace('\r','')
     match = re.compile('name="(.+?)".+?rl="(.+?)".+?mg="(.+?)".+?anart="(.+?)".+?escription="(.+?)"').findall(link)
     for name,url,iconimage,fanart,description in match:
         addDir(name,url,1,iconimage,fanart,description)
