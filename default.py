@@ -15,7 +15,7 @@ base='http://www.mikodi.uk/Wizard'
 ADDON=xbmcaddon.Addon(id='plugin.video.mikodiwizard')
 dialog = xbmcgui.Dialog()
 VERSION = "1.0.2"
-PATH = "mikodiwizard-master"
+PATH = "mikodiwizard"
 
 
 def CATEGORIES():
