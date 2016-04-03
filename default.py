@@ -19,7 +19,7 @@ PATH = "mikodiwizard"
 
 
 def CATEGORIES():
-    link = OPEN_URL('http://mikodi.uk/Wizard/mikodiwizard.txt').replace('\n','').replace('\r','')
+    link = OPEN_URL('http://mikodi.uk/Wizard/fwizard.txt').replace('\n','').replace('\r','')
     match = re.compile('name="(.+?)".+?rl="(.+?)".+?mg="(.+?)".+?anart="(.+?)".+?escription="(.+?)"').findall(link)
     for name,url,iconimage,fanart,description in match:
         addDir(name,url,1,iconimage,fanart,description)
@@ -38,7 +38,7 @@ def OPEN_URL(url):
 def wizard(name,url,description):
     path = xbmc.translatePath(os.path.join('special://home/addons','packages'))
     dp = xbmcgui.DialogProgress()
-    dp.create("Mi Kodi Wizard","Downloading ",'', 'Please Wait')
+    dp.create("Wizard","Downloading ",'', 'Please Wait')
     lib=os.path.join(path, name+'.zip')
     try:
        os.remove(lib)
@@ -53,7 +53,7 @@ def wizard(name,url,description):
     print '======================================='
     extract.all(lib,addonfolder,dp)
     dialog = xbmcgui.Dialog()
-    dialog.ok("DOWNLOAD COMPLETE", 'Unfortunately the only way to get the new changes to stick is', 'to force close kodi. Click ok to force Kodi to close,', 'DO NOT use the quit/exit options in Kodi., If the Force close does not close for some reason please Restart Device or kill task manaully')
+    dialog.ok("DOWNLOAD COMPLETE", 'kodi now needs to force close for the settings to wrok. Click ok to force Kodi to close,', 'DO NOT use the quit/exit options in Kodi., If the Force close does not close for some reason please Restart Device or kill task manaully')
     killxbmc()
 
 
