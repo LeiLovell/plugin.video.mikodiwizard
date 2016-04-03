@@ -11,15 +11,15 @@ import ntpath
 
 
 USER_AGENT = 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3'
-base='http://www.mikodi.uk'
+base='http://www.mikodi.uk/Wizard'
 ADDON=xbmcaddon.Addon(id='plugin.video.mikodiwizard')
 dialog = xbmcgui.Dialog()
 VERSION = "1.0.2"
-PATH = "mikodiwizard"
+PATH = "mikodiwizard-master"
 
 
 def CATEGORIES():
-    link = OPEN_URL('http://mikodi.uk/wizard.txt').replace('\n','').replace('\r','')
+    link = OPEN_URL('').replace('\n','').replace('\r','')
     match = re.compile('name="(.+?)".+?rl="(.+?)".+?mg="(.+?)".+?anart="(.+?)".+?escription="(.+?)"').findall(link)
     for name,url,iconimage,fanart,description in match:
         addDir(name,url,1,iconimage,fanart,description)
